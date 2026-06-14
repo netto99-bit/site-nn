@@ -1,0 +1,59 @@
+---
+// Layout principal do site institucional NN Engenharia
+---
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NN Engenharia LTDA | Consultorias, Serviços e Construções</title>
+    <!-- Google Fonts para usar uma tipografia moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#043c2c] text-white font-['Inter',sans-serif] min-h-screen flex flex-col justify-between m-0 p-0">
+    
+    <!-- Header / Logo -->
+    <header class="w-full max-w-4xl mx-auto p-8 flex flex-col items-center justify-center text-center flex-grow">
+      <div class="mb-8 tracking-widest animate-fade-in">
+        <!-- O LOGO GEOMÉTRICO (Representação em texto enquanto não subimos a imagem) -->
+        <div class="text-6xl md:text-8xl font-light border-b border-white/20 pb-4 relative">
+          NN
+          <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/40 transform -translate-x-1/2"></div>
+        </div>
+        <h1 class="text-xl md:text-2xl font-bold uppercase tracking-[0.3em] mt-4">ENGENHARIA LTDA</h1>
+      </div>
+      
+      <!-- Slogan Oficial do Logo -->
+      <p class="text-sm md:text-base uppercase tracking-[0.2em] text-gray-300 max-w-md mx-auto mb-12">
+        Consultorias, Serviços e Construções
+      </p>
+
+      <!-- Botão de Ação Direta (WhatsApp) -->
+      <a 
+        href="https://wa.me/SEUNUMERODOWHATSAPP" 
+        target="_blank" 
+        class="bg-white text-[#043c2c] font-semibold uppercase tracking-wider px-8 py-4 rounded-sm hover:bg-gray-200 transition-all duration-300 shadow-lg text-sm"
+      >
+        Falar com um Especialista
+      </a>
+    </header>
+
+    <!-- Rodapé Simples -->
+    <footer class="w-full text-center py-6 border-t border-white/10 text-xs text-gray-400 tracking-widest">
+      &copy; 2026 NN ENGENHARIA LTDA. TODOS OS DIREITOS RESERVADOS.
+    </footer>
+
+  </body>
+</html>
+
+<style>
+  /* Pequena animação suave para o site abrir com elegância */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+</style>
