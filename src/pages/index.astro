@@ -1,59 +1,133 @@
 ---
-// Layout principal do site institucional NN Engenharia
+import '../styles/global.css';
+const rawWhatsapp = import.meta.env.PUBLIC_WHATSAPP ?? '';
+const whatsapp = /^\d{10,15}$/.test(rawWhatsapp) ? rawWhatsapp : '';
+const services = [
+  { number: '01', title: 'Consultorias', description: 'Um olhar técnico para entender sua necessidade e orientar os próximos passos do seu projeto.', items: ['Entendimento da demanda', 'Análise de alternativas', 'Orientação técnica'], icon: '◇' },
+  { number: '02', title: 'Serviços', description: 'Planejamento e organização para transformar necessidades em um escopo claro de trabalho.', items: ['Definição de escopo', 'Orçamento e planejamento', 'Acompanhamento das etapas'], icon: '⌁' },
+  { number: '03', title: 'Construções', description: 'Da primeira conversa à execução: o cuidado com cada etapa começa antes da obra.', items: ['Construções e reformas', 'Organização da execução', 'Atenção aos detalhes'], icon: '⌂' },
+];
 ---
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#043c2c" />
+    <meta name="description" content="NN Engenharia LTDA. Consultorias, serviços e construções. Conheça nossa atuação e organize as informações para solicitar seu orçamento." />
+    <meta property="og:title" content="NN Engenharia | Cada projeto começa com uma boa base." />
+    <meta property="og:description" content="Consultorias, serviços e construções. Vamos dar forma ao seu próximo projeto." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>NN Engenharia LTDA | Consultorias, Serviços e Construções</title>
-    <!-- Google Fonts para usar uma tipografia moderna -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#043c2c] text-white font-['Inter',sans-serif] min-h-screen flex flex-col justify-between m-0 p-0">
-    
-    <!-- Header / Logo -->
-    <header class="w-full max-w-4xl mx-auto p-8 flex flex-col items-center justify-center text-center flex-grow">
-      <div class="mb-8 tracking-widest animate-fade-in">
-        <!-- O LOGO GEOMÉTRICO (Representação em texto enquanto não subimos a imagem) -->
-        <div class="text-6xl md:text-8xl font-light border-b border-white/20 pb-4 relative">
-          NN
-          <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/40 transform -translate-x-1/2"></div>
-        </div>
-        <h1 class="text-xl md:text-2xl font-bold uppercase tracking-[0.3em] mt-4">ENGENHARIA LTDA</h1>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <header class="header">
+      <div class="container header-inner">
+        <a href="#inicio" class="brand" aria-label="NN Engenharia, início"><span class="monogram">NN</span><span class="brand-name">ENGENHARIA<span>CONSULTORIAS · SERVIÇOS · CONSTRUÇÕES</span></span></a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button>
+        <nav id="navigation" aria-label="Navegação principal">
+          <a href="#atuacao">Atuação</a><a href="#sobre">A NN</a><a href="#processo">Como começar</a><a class="nav-cta" href="#orcamento">Seu projeto <span aria-hidden="true">↗</span></a>
+        </nav>
       </div>
-      
-      <!-- Slogan Oficial do Logo -->
-      <p class="text-sm md:text-base uppercase tracking-[0.2em] text-gray-300 max-w-md mx-auto mb-12">
-        Consultorias, Serviços e Construções
-      </p>
-
-      <!-- Botão de Ação Direta (WhatsApp) -->
-      <a 
-        href="https://wa.me/SEUNUMERODOWHATSAPP" 
-        target="_blank" 
-        class="bg-white text-[#043c2c] font-semibold uppercase tracking-wider px-8 py-4 rounded-sm hover:bg-gray-200 transition-all duration-300 shadow-lg text-sm"
-      >
-        Falar com um Especialista
-      </a>
     </header>
-
-    <!-- Rodapé Simples -->
-    <footer class="w-full text-center py-6 border-t border-white/10 text-xs text-gray-400 tracking-widest">
-      &copy; 2026 NN ENGENHARIA LTDA. TODOS OS DIREITOS RESERVADOS.
-    </footer>
-
+    <main id="conteudo">
+      <section id="inicio" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="dot"></span> NN ENGENHARIA LTDA</p>
+            <h1>Cada projeto<br />começa com<br />uma <em>boa base.</em></h1>
+            <p class="hero-description">Consultorias, serviços e construções.<br />Engenharia para dar forma ao que você planeja.</p>
+            <a href="#orcamento" class="button button-lime">Vamos falar do seu projeto <span aria-hidden="true">↗</span></a>
+            <a href="#atuacao" class="text-link">Conheça nossa atuação <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="drawing" aria-hidden="true">
+            <div class="drawing-top"><span>DA IDEIA À CONSTRUÇÃO</span><span>NN / 01</span></div>
+            <svg class="building" viewBox="0 0 600 600" fill="none">
+              <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#b5d1ba" stroke-opacity=".09" stroke-width="1"/></pattern><linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#477661"/><stop offset="1" stop-color="#164c3c"/></linearGradient></defs>
+              <rect width="600" height="600" fill="url(#grid)"/>
+              <g stroke="#a9c9ab" stroke-width="1.3" stroke-linejoin="round">
+                <path d="M50 451L289 583L560 428L321 296Z" stroke-opacity=".25"/>
+                <path d="M70 414L287 539L546 390" stroke-dasharray="5 7" stroke-opacity=".6"/>
+                <path d="M147 414V256L330 150L469 230V388L286 493Z" fill="#134735"/>
+                <path d="M147 256L286 336L469 230L330 150Z" fill="#71917a"/>
+                <path d="M286 336V493L469 388V230Z" fill="url(#wall)"/>
+                <path d="M147 256L286 336V493L147 414Z" fill="#0b3026"/>
+                <path d="M134 245L330 132L483 220V239L286 353L134 265Z" fill="#62836b"/>
+                <path d="M134 245L286 333L483 220M286 333V353"/>
+                <path d="M164 283L263 340V449L164 392Z" fill="#102e27"/>
+                <path d="M189 297V406M214 312V420M239 326V435M164 361L263 417" stroke-opacity=".55"/>
+                <path d="M313 349L439 276V372L313 445Z" fill="#0d3127"/>
+                <path d="M345 330V426M376 312V409M407 294V390M313 397L439 324" stroke-opacity=".65"/>
+                <path d="M219 194V132L339 63L416 108V169L296 239Z" fill="#386650"/>
+                <path d="M219 132L296 177L416 108L339 63Z" fill="#91aa8b"/>
+                <path d="M296 177V239M237 145V204M256 155V215M276 166V226"/>
+                <path d="M317 177L395 132V164L317 209Z" fill="#0d3127"/>
+                <path d="M53 475L286 610M505 246V420M127 258L90 237M147 414L90 381M100 242V385" stroke-opacity=".45"/>
+                <path d="M91 246L108 237M91 389L108 380M496 251L513 241M496 425L513 415"/>
+                <path d="M330 32V116M288 74H372" stroke="#d9e7a3" stroke-opacity=".7"/>
+              </g>
+              <circle cx="330" cy="74" r="16" stroke="#d9e7a3" stroke-opacity=".5"/>
+            </svg>
+            <div class="drawing-bottom"><span>PRECISÃO EM CADA ETAPA.</span><span class="drawing-cross">+</span></div>
+            <p class="drawing-caption">Ilustração conceitual</p>
+          </div>
+        </div>
+        <div class="container hero-base"><span>PLANEJAR. CONSTRUIR. TRANSFORMAR.</span><a href="#atuacao" aria-label="Explorar atuação">EXPLORE <span aria-hidden="true">↓</span></a></div>
+      </section>
+      <section id="atuacao" class="section services">
+        <div class="container">
+          <div class="section-heading"><div><p class="eyebrow">01 / NOSSA ATUAÇÃO</p><h2>A solução certa.<br />Desde o primeiro passo.</h2></div><p>Todo projeto tem um ponto de partida.<br />Encontre o seu com a NN Engenharia.</p></div>
+          <div class="service-grid">{services.map(service => <article class="service"><div class="service-top"><span>{service.number}</span><span class="service-icon" aria-hidden="true">{service.icon}</span></div><h3>{service.title}</h3><p>{service.description}</p><ul>{service.items.map(item => <li>{item}</li>)}</ul><a href="#orcamento" data-service={service.title}>Conversar sobre {service.title.toLowerCase()} <span aria-hidden="true">↗</span></a></article>)}</div>
+          <p class="section-note">O escopo de cada serviço é definido após a análise da demanda.</p>
+        </div>
+      </section>
+      <section id="sobre" class="section about">
+        <div class="container about-grid"><div><p class="eyebrow">02 / A NN ENGENHARIA</p><h2>Uma boa obra<br />começa muito antes<br />da <em>primeira parede.</em></h2></div><div class="about-copy"><p class="large-copy">Começa com uma necessidade bem compreendida. Com escolhas conscientes. Com um plano.</p><p>A NN Engenharia LTDA reúne consultorias, serviços e construções em uma proposta: dar atenção ao que importa em cada etapa do seu projeto.</p><div class="principles"><span>Clareza no escopo</span><span>Cuidado na execução</span><span>Visão do conjunto</span></div></div></div>
+      </section>
+      <section id="processo" class="section process"><div class="container"><div class="section-heading"><div><p class="eyebrow">03 / COMO COMEÇAR</p><h2>Da sua ideia<br />ao próximo passo.</h2></div><a class="text-link dark-link" href="#orcamento">Organizar meu pedido <span aria-hidden="true">↗</span></a></div><ol class="steps"><li><span class="step-number">01</span><h3>Conte sua ideia</h3><p>Qual é a sua necessidade? Informe o tipo de serviço, o local e o que você imagina realizar.</p></li><li><span class="step-number">02</span><h3>Defina os detalhes</h3><p>Reúna as informações disponíveis: medidas, referências e a previsão de início.</p></li><li><span class="step-number">03</span><h3>Converse com a NN</h3><p>Compartilhe seu pedido para avaliar o escopo e os próximos passos de uma proposta.</p></li></ol></div></section>
+      <section id="orcamento" class="section contact"><div class="container contact-grid"><div><p class="eyebrow">04 / SEU PRÓXIMO PROJETO</p><h2>O que vamos<br /><em>construir?</em></h2><p>Organize sua ideia em poucos campos.<br />O primeiro passo pode ser simples.</p><div class="contact-note"><span aria-hidden="true">↗</span><p>{whatsapp ? 'Ao continuar, você abre o WhatsApp para revisar e enviar sua mensagem.' : 'Prepare e copie seu pedido para compartilhar com a NN pelo canal de atendimento que você já utiliza.'}</p></div><p class="privacy-note">Os dados ficam apenas nesta página e não são armazenados. Você decide quando e com quem compartilhar.</p></div>
+        <form id="brief-form" data-whatsapp={whatsapp}>
+          <label for="name">Como podemos chamar você?</label><input id="name" name="name" autocomplete="given-name" placeholder="Seu nome" required maxlength="100" />
+          <div class="form-row"><div><label for="service">Do que você precisa?</label><select id="service" name="service" required><option value="">Selecione o serviço</option><option>Consultorias</option><option>Serviços</option><option>Construções</option><option>Quero orientação</option></select></div><div><label for="city">Onde será o projeto?</label><input id="city" name="city" autocomplete="address-level2" placeholder="Cidade / UF" required maxlength="120" /></div></div>
+          <label for="description">Conte um pouco sobre sua ideia</label><textarea id="description" name="description" rows="4" required maxlength="1800" placeholder="Tipo de obra, tamanho aproximado, prazo desejado…"></textarea>
+          <button class="button button-lime" type="submit">{whatsapp ? 'Preparar mensagem para WhatsApp' : 'Preparar meu pedido'} <span aria-hidden="true">↗</span></button><p class="form-hint">{whatsapp ? 'Você revisa a mensagem antes de enviar.' : 'Este formulário prepara um texto. Não envia uma solicitação.'}</p>
+          <div id="brief-result" hidden><label for="brief-text">Seu pedido está pronto para compartilhar</label><textarea id="brief-text" rows="7" readonly></textarea><div class="result-actions"><button id="copy-brief" type="button" class="button button-outline">Copiar pedido</button>{whatsapp && <a id="send-brief" class="button button-lime" target="_blank" rel="noopener noreferrer">Abrir WhatsApp ↗</a>}</div><p id="copy-status" role="status" aria-live="polite"></p></div>
+          <noscript><p>Para preparar o pedido, ative o JavaScript no navegador. Reúna seu nome, cidade, serviço e descrição do projeto e compartilhe pelo canal de atendimento que você já utiliza.</p></noscript>
+        </form>
+      </div></section>
+    </main>
+    <footer class="footer"><div class="container footer-top"><a class="brand" href="#inicio" aria-label="NN Engenharia, voltar ao início"><span class="monogram">NN</span><span class="brand-name">ENGENHARIA<span>CONSULTORIAS · SERVIÇOS · CONSTRUÇÕES</span></span></a><a href="#inicio">Voltar ao topo ↑</a></div><div class="container footer-bottom"><span>© {new Date().getFullYear()} NN Engenharia LTDA.</span><span>Consultorias, serviços e construções.</span></div></footer>
+    <script>
+      const menu = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const navigation = document.querySelector<HTMLElement>('#navigation');
+      const closeMenu = () => { menu?.setAttribute('aria-expanded', 'false'); navigation?.classList.remove('is-open'); };
+      menu?.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); navigation?.classList.toggle('is-open', open); });
+      navigation?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
+      const form = document.querySelector<HTMLFormElement>('#brief-form');
+      const result = document.querySelector<HTMLElement>('#brief-result');
+      const output = document.querySelector<HTMLTextAreaElement>('#brief-text');
+      const status = document.querySelector<HTMLElement>('#copy-status');
+      document.querySelectorAll<HTMLAnchorElement>('[data-service]').forEach(link => link.addEventListener('click', () => { const select = document.querySelector<HTMLSelectElement>('#service'); if (select) select.value = link.dataset.service ?? ''; }));
+      form?.addEventListener('submit', event => {
+        event.preventDefault();
+        const fields = ['name', 'service', 'city', 'description'];
+        for (const name of fields) { const field = form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement; field.setCustomValidity(field.value.trim() ? '' : 'Preencha este campo.'); }
+        if (!form.reportValidity() || !output || !result) return;
+        const data = new FormData(form);
+        const text = (name: string) => String(data.get(name) ?? '').trim();
+        output.value = `Olá, NN Engenharia! Gostaria de conversar sobre um projeto.\n\nNome: ${text('name')}\nServiço: ${text('service')}\nLocal: ${text('city')}\n\nMinha ideia:\n${text('description')}`;
+        const send = document.querySelector<HTMLAnchorElement>('#send-brief');
+        if (send && form.dataset.whatsapp) send.href = `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(output.value)}`;
+        if (status) status.textContent = '';
+        result.hidden = false;
+        output.focus();
+      });
+      form?.addEventListener('input', event => { const field = event.target; if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) field.setCustomValidity(''); if (result && field !== output) result.hidden = true; });
+      document.querySelector('#copy-brief')?.addEventListener('click', async () => { if (!output || !status) return; try { await navigator.clipboard.writeText(output.value); status.textContent = 'Pedido copiado. Agora cole no seu canal de atendimento.'; } catch { output.focus(); output.select(); status.textContent = 'Selecione e copie o texto acima usando o menu do seu dispositivo.'; } });
+    </script>
   </body>
 </html>
-
-<style>
-  /* Pequena animação suave para o site abrir com elegância */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
-  }
-</style>
