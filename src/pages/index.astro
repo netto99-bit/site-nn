@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const rawWhatsapp = import.meta.env.PUBLIC_WHATSAPP ?? '';
+const rawWhatsapp = import.meta.env.PUBLIC_WHATSAPP?.trim() || '5582988969284';
 const whatsapp = /^\d{10,15}$/.test(rawWhatsapp) ? rawWhatsapp : '';
 const services = [
   { number: '01', title: 'Consultorias', description: 'Um olhar técnico para entender sua necessidade e orientar os próximos passos do seu projeto.', items: ['Entendimento da demanda', 'Análise de alternativas', 'Orientação técnica'], icon: '◇' },
@@ -90,6 +90,7 @@ const services = [
       <section id="processo" class="section process"><div class="container"><div class="section-heading"><div><p class="eyebrow">03 / COMO COMEÇAR</p><h2>Da sua ideia<br />ao próximo passo.</h2></div><a class="text-link dark-link" href="#orcamento">Organizar meu pedido <span aria-hidden="true">↗</span></a></div><ol class="steps"><li><span class="step-number">01</span><h3>Conte sua ideia</h3><p>Qual é a sua necessidade? Informe o tipo de serviço, o local e o que você imagina realizar.</p></li><li><span class="step-number">02</span><h3>Defina os detalhes</h3><p>Reúna as informações disponíveis: medidas, referências e a previsão de início.</p></li><li><span class="step-number">03</span><h3>Converse com a NN</h3><p>Compartilhe seu pedido para avaliar o escopo e os próximos passos de uma proposta.</p></li></ol></div></section>
       <section id="orcamento" class="section contact"><div class="container contact-grid"><div><p class="eyebrow">04 / SEU PRÓXIMO PROJETO</p><h2>O que vamos<br /><em>construir?</em></h2><p>Organize sua ideia em poucos campos.<br />O primeiro passo pode ser simples.</p><div class="contact-note"><span aria-hidden="true">↗</span><p>{whatsapp ? 'Ao continuar, você abre o WhatsApp para revisar e enviar sua mensagem.' : 'Prepare e copie seu pedido para compartilhar com a NN pelo canal de atendimento que você já utiliza.'}</p></div><p class="privacy-note">Os dados ficam apenas nesta página e não são armazenados. Você decide quando e com quem compartilhar.</p></div>
         <form id="brief-form" data-whatsapp={whatsapp}>
+          {whatsapp && <p><a class="text-link" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener noreferrer">Prefere conversar agora? Fale pelo WhatsApp ↗</a></p>}
           <label for="name">Como podemos chamar você?</label><input id="name" name="name" autocomplete="given-name" placeholder="Seu nome" required maxlength="100" />
           <div class="form-row"><div><label for="service">Do que você precisa?</label><select id="service" name="service" required><option value="">Selecione o serviço</option><option>Consultorias</option><option>Serviços</option><option>Construções</option><option>Quero orientação</option></select></div><div><label for="city">Onde será o projeto?</label><input id="city" name="city" autocomplete="address-level2" placeholder="Cidade / UF" required maxlength="120" /></div></div>
           <label for="description">Conte um pouco sobre sua ideia</label><textarea id="description" name="description" rows="4" required maxlength="1800" placeholder="Tipo de obra, tamanho aproximado, prazo desejado…"></textarea>
